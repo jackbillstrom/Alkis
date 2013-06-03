@@ -1,0 +1,113 @@
+
+<html>
+<head>
+	<title>Alkis.se</title>
+	<meta charset="utf-8" />
+	<link rel="alternate" hreflang="en-GB" href="/en" />
+	<link rel="alternate" hreflang="sv-SV" href="/sv" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <!-- Global css -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Quicksand webfont -->
+	<link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+	<!-- jQuery & jQuery UI -->
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+</head>
+<body>
+	<!-- Heading & paragraph -->
+	<div id="container">
+		<p class="title">Alkis.se</p>
+		<p class="bio">För dig som dricker... ja, mycket</p>
+
+		<!-- Guick guide -->
+		<center>
+			<div id="status" class="alert alert-success">
+	        	<strong>Sök efter din favorit sprit</strong>
+	    	</div>
+	    </center>
+	    <!-- Searchform -->
+		<center>
+			<div class="form-search">
+				<div class="input-append form-search">
+			    	<input id="input" type="text" class="span2 search-query" placeholder="t.ex. Smirnoff Ice" size="40">
+			    	<button id="hide" onClick="getInput()" class="btn btn-success"><i style="margin-left:-1px" class="icon-glass icon-white"></i></button><center><img src="img/loading.gif" style="display: none;width: 20px;height: 20px;margin-top: 100px;" id="loading_image"></center>
+				</div>
+			</div>
+		</center>
+	</div>
+	
+<script>
+	function getInput(){
+        $('#loading_image').show();
+		var inputSprit = document.getElementById("input").value;
+		var div = document.getElementById("sokTitel");
+		var text = div.textContent;
+		div.textContent = inputSprit;
+        
+        $.getJSON('proxy.php?name=' + inputSprit, function(json) {
+            
+            
+                    
+                    for (var i = 0; i < json.data.length;i++){
+                        $('#loading_image').hide();
+		                $( "#container" ).hide( "drop", { direction: "down" }, "slow" );
+		                $( "#hiddenContainer" ).show( "slide", 1000 );
+                        var table=document.getElementById("tabel");
+                        var row=table.insertRow(-1);
+                        var cell1=row.insertCell(0);
+                        var cell2=row.insertCell(1);
+                        var cell3=row.insertCell(2);
+                        var cell4=row.insertCell(3);
+                        var cell5=row.insertCell(4);
+                        cell1.innerHTML=json.data[i].name;
+                        cell2.innerHTML=json.data[i].name_2;
+                        cell3.innerHTML=json.data[i].alcohol_percent;
+                        cell4.innerHTML=json.data[i].volume;
+                        cell5.innerHTML=json.data[i].price;
+                    }
+        });
+}
+</script>
+
+	<div id="hiddenContainer">
+		<center>
+			<p id="sokTitel" class="bio">{title}</p><p class="mini">Av: Tim & Jack Billström</p>
+			<table class="table" id="tabel">
+              <thead>
+                <tr>
+                  <th>Dryck</th>
+                  <th>Alternativt namn</th>
+                  <th>%</th>
+                  <th>Volym (l)</th>
+                  <th>Pris (SEK)</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+              </tbody>
+            </table>
+		</center>
+	</div>
+
+	<!-- Author twitterhandle -->
+	<div id="footer">
+        
+	</div>
+
+
+	<!-- GA -->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41412420-1', 'codele.se');
+  ga('send', 'pageview');
+
+</script>
+	</script>
+</body>
+</html>

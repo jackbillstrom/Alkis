@@ -1,0 +1,84 @@
+/* 
+Author: Jack Billström
+*/
+body {
+	background-image: url(../img/bg_1.jpg);
+    background-repeat:no-repeat;
+    background-position:center;
+	margin: 0;
+	padding: 0;
+    background-attachment: fixed;
+}
+#container {
+	margin-top: 100px;
+	width: 100%;
+}
+.title {
+	font-family: 'Quicksand', sans-serif;
+	color:white;
+	font-size: 8em;
+	text-align: center;
+}
+.bio {
+	font-family: 'Quicksand', sans-serif;
+	color:white;
+	font-size: 3em;
+	text-align: center;
+	margin-top:100px;
+	line-height:150%;
+}
+/* Margins our form */
+#input-append {
+	margin-top: 100px;
+}
+#input {
+	width: 80%;
+    height:auto;
+}
+/* Quick guide style */
+#status {
+	width: 40%;
+}
+/* Styles links inside our footer */
+#footer > a {
+	color: #cecece;
+}
+/* Puts our footer at the bottom */
+#footer {
+	position:absolute;
+   	bottom:0;
+   	text-align: center;
+   	width:100%;
+}
+#hiddenContainer {
+	display: none;
+	padding-left:10%;
+	width: 80%;
+}
+
+loading {
+    display:none;
+    align-content:center;
+    
+}
+.mini {
+	color:white;
+}
+.mini > span {
+	color:#468847;
+}
+table {
+	border-top: solid 1px #212121;
+}
+th {
+	background: #181818;
+	color:#cecece;
+}
+tr:nth-child(even) {
+	background: #1f1f1f;
+	color:#dff0d8;
+}
+tr:nth-child(odd) {
+	background: #292929;
+	color:#dff0d8;
+}
